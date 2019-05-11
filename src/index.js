@@ -1,10 +1,5 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import Car from './car/Car';
 
-const element = React.createElement(
-  'h1',
-  {},
-  'Hello, world!'
-);
-
-ReactDom.render(element, document.getElementById("root"));
+ReactDom.render(<Car />, document.getElementById("root"));

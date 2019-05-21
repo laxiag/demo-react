@@ -1,6 +1,7 @@
 import React from 'react';
 import { CarFactory } from './CarFactory';
-import { Button } from 'antd';
+import { Button, Input } from 'antd';
+import { func } from 'prop-types';
 
 class CarLevelA extends React.PureComponent {
   constructor(props) {
@@ -23,11 +24,25 @@ class CarLevelA extends React.PureComponent {
     this.props && this.props.showCarLevelAProduceStatus();
   }
 
+  // debounce
+  producePlanControl = (e) => {
+    let timer = null;
+    return () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        console.log(`The production plan is ok! (${new Date().getTime()})`);
+      }, 2000);
+    };
+  }
+
   render() {
     return (
       <div>
         <div>
           {this.state.produceStatus.map((item, index) => <div key={index}>{item}</div>)}
+        </div>
+        <div>
+          <Input onKeyDown={this.producePlanControl.bind(this)()} />
         </div>
         <div>
           <Button onClick={this.produceControl.bind(this, 'start')}>start</Button>

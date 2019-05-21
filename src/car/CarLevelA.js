@@ -25,7 +25,7 @@ class CarLevelA extends React.PureComponent {
   }
 
   // debounce
-  producePlanControl = (e) => {
+  producePlanControl = () => {
     let timer = null;
     return () => {
       clearTimeout(timer);
